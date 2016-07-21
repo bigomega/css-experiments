@@ -1,0 +1,90 @@
+body {
+  font-family: Helvetica, sans-serif; }
+
+h3 {
+  color: #333;
+  text-align: center;
+  margin-top: 0; }
+  h3 a {
+    color: #8fc045; }
+    h3 a:hover {
+      color: #749d35; }
+
+.bigomega-block {
+  width: 300px;
+  height: 180px;
+  margin: 8em auto 0;
+  padding: 30px 0 0 30px;
+  /* border: 1px solid #ccc; */
+  box-sizing: border-box;
+  background: rgba(255, 255, 255, 0.75); }
+  .bigomega-block .line {
+    display: flex;
+    margin-top: -30px; }
+    .bigomega-block .line:nth-child(odd) {
+      padding-left: 20px; }
+    .bigomega-block .line .point {
+      display: inline-block;
+      width: 0px;
+      height: 0px;
+      border: 20px solid;
+      border-top-width: 30px;
+      border-bottom-width: 30px;
+      border-color: transparent;
+      border-left-color: transparent;
+      border-right-color: transparent;
+      /* border-top-color: rgba(255, 0, 0, 0.62); */
+      /* border-bottom-color: rgba(0, 0, 255, 0.65); */ }
+      .bigomega-block .line .point.point-b {
+        border-bottom-color: black;
+        animation: bigomega_color_b 3s linear infinite alternate; }
+      .bigomega-block .line .point.point-t {
+        border-top-color: black;
+        animation: bigomega_color_t 3s linear infinite alternate; }
+      .bigomega-block .line .point.point-tb {
+        border-bottom-color: black;
+        border-top-color: black;
+        animation: bigomega_color_b 3s linear infinite alternate, bigomega_color_t 3s linear infinite alternate; }
+
+@-webkit-keyframes bigomega_color_b {
+  from {
+    border-bottom-color: black; }
+  to {
+    border-bottom-color: #8fc045; } }
+@-moz-keyframes bigomega_color_b {
+  from {
+    border-bottom-color: black; }
+  to {
+    border-bottom-color: #8fc045; } }
+@-o-keyframes bigomega_color_b {
+  from {
+    border-bottom-color: black; }
+  to {
+    border-bottom-color: #8fc045; } }
+@keyframes bigomega_color_b {
+  from {
+    border-bottom-color: black; }
+  to {
+    border-bottom-color: #8fc045; } }
+@-webkit-keyframes bigomega_color_t {
+  to {
+    border-top-color: #8fc045; }
+  from {
+    border-top-color: black; } }
+@-moz-keyframes bigomega_color_t {
+  to {
+    border-top-color: #8fc045; }
+  from {
+    border-top-color: black; } }
+@-o-keyframes bigomega_color_t {
+  to {
+    border-top-color: #8fc045; }
+  from {
+    border-top-color: black; } }
+@keyframes bigomega_color_t {
+  to {
+    border-top-color: #8fc045; }
+  from {
+    border-top-color: black; } }
+
+/*# sourceMappingURL=style.css.map */
