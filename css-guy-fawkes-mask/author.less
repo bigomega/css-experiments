@@ -1,0 +1,219 @@
+.animation() {
+  -webkit-transition: all 0.3s linear;
+  -moz-transition: all 0.3s linear;
+  -ms-transition: all 0.3s linear;
+  -o-transition: all 0.3s linear;
+  transition: all 0.3s linear;
+}
+
+.bright-animation() {
+	box-shadow: 0 0 0 5px #bbb, 0 0 0 20px #eee;
+  animation: bright 0.5s linear 0 1 normal;
+  -webkit-animation: bright 0.5s linear 0 1 normal; /* Chrome, Safari, Opera */
+}
+
+.dark-animation() {
+	box-shadow: 0 0 0 5px #666, 0 0 0 20px #333;
+  animation: dark 0.5s linear 0 1 normal;
+  -webkit-animation: dark 0.5s linear 0 1 normal; /* Chrome, Safari, Opera */
+}
+
+.keyframes;
+
+.author {
+  font-family: 'Raleway', sans-serif;
+  position: fixed;
+  left: 0;
+  top: 0;
+  padding: 10px;
+  padding-right: 30px;
+  margin: 20px 0 0 20px;
+  color: #000;
+  background-color: transparent;
+  border-radius: 100px;
+  .animation;
+
+  & > img {
+    width: 60px;
+    border-radius: 100px;
+    box-shadow: 0 0 0 5px #eee;
+    float: left;
+    &:hover{
+    	.bright-animation;
+    }
+  }
+  & > .text {
+    float: left;
+    margin-left: 20px;
+    margin-top: 3px;
+    opacity: 0;
+    z-index: -1;
+    .animation;
+
+    & > .intro {
+      line-height: 23px;
+      font-size: 14px;
+    }
+    & > .name {
+      text-decoration: underline;
+      font-size: 24px;
+      font-weight: 400;
+    }
+  }
+
+  &:hover {
+	  background-color: #eee;
+	  & > .text {
+	    opacity: 1;
+	    z-index: 0;
+	  }
+	  & > img{
+	  	.bright-animation;
+	  }
+	}
+
+}
+.off {
+  .author {
+    & > img {
+      box-shadow: 0 0 0 5px #333;
+      &:hover{
+      	.dark-animation;
+      }
+    }
+    & > .text {
+      color: #fff;
+    }
+	  &:hover {
+	    background-color: #333;
+	    & > img{
+	    	.dark-animation;
+	    }
+	  }
+  }
+}
+
+.keyframes() {
+	/* Chrome, Safari, Opera */
+	@-webkit-keyframes bright {
+	    0% {
+				box-shadow: 0 0 0 5px #666;
+	    }
+	    12% {
+				box-shadow: 0 0 0 5px #999, 0 0 0 10px #666;
+	    }
+	    25% {
+				box-shadow: 0 0 0 5px #bbb, 0 0 0 10px #999, 0 0 0 15px #666;
+	    }
+	    37% {
+				box-shadow: 0 0 0 5px #ddd, 0 0 0 10px #bbb, 0 0 0 15px #999, 0 0 0 20px #666;
+	    }
+	    50% {
+				box-shadow: 0 0 0 5px #eee, 0 0 0 10px #ddd, 0 0 0 15px #bbb, 0 0 0 20px #999;
+	    }
+	    62% {
+				box-shadow: 0 0 0 5px #ccc, 0 0 0 10px #eee, 0 0 0 15px #ddd, 0 0 0 20px #bbb;
+	    }
+	    75% {
+				box-shadow: 0 0 0 5px #ccc, 0 0 0 15px #eee, 0 0 0 20px #ddd;
+	    }
+	    87% {
+				box-shadow: 0 0 0 5px #bbb, 0 0 0 20px #eee;
+	    }
+	    100% {
+				box-shadow: 0 0 0 5px #bbb, 0 0 0 20px #eee;
+	    }
+	}
+
+	/* Standard syntax */
+	@keyframes bright {
+	    0% {
+				box-shadow: 0 0 0 5px #666;
+	    }
+	    12% {
+				box-shadow: 0 0 0 5px #999, 0 0 0 10px #666;
+	    }
+	    25% {
+				box-shadow: 0 0 0 5px #bbb, 0 0 0 10px #999, 0 0 0 15px #666;
+	    }
+	    37% {
+				box-shadow: 0 0 0 5px #ddd, 0 0 0 10px #bbb, 0 0 0 15px #999, 0 0 0 20px #666;
+	    }
+	    50% {
+				box-shadow: 0 0 0 5px #eee, 0 0 0 10px #ddd, 0 0 0 15px #bbb, 0 0 0 20px #999;
+	    }
+	    62% {
+				box-shadow: 0 0 0 5px #bbb, 0 0 0 10px #eee, 0 0 0 15px #ddd, 0 0 0 20px #bbb;
+	    }
+	    75% {
+				box-shadow: 0 0 0 5px #999, 0 0 0 15px #eee, 0 0 0 20px #ddd;
+	    }
+	    87% {
+				box-shadow: 0 0 0 5px #666, 0 0 0 20px #eee;
+	    }
+	    100% {
+				box-shadow: 0 0 0 5px #333, 0 0 0 20px #eee;
+	    }
+	}
+	/* Chrome, Safari, Opera */
+	@-webkit-keyframes dark {
+	    0% {
+				box-shadow: 0 0 0 5px #aaa;
+	    }
+	    12% {
+				box-shadow: 0 0 0 5px #999, 0 0 0 10px #aaa;
+	    }
+	    25% {
+				box-shadow: 0 0 0 5px #777, 0 0 0 10px #999, 0 0 0 15px #aaa;
+	    }
+	    37% {
+				box-shadow: 0 0 0 5px #555, 0 0 0 10px #777, 0 0 0 15px #999, 0 0 0 20px #aaa;
+	    }
+	    50% {
+				box-shadow: 0 0 0 5px #333, 0 0 0 10px #555, 0 0 0 15px #777, 0 0 0 20px #999;
+	    }
+	    62% {
+				box-shadow: 0 0 0 5px #454545, 0 0 0 10px #333, 0 0 0 15px #555, 0 0 0 20px #777;
+	    }
+	    75% {
+				box-shadow: 0 0 0 5px #454545, 0 0 0 15px #333, 0 0 0 20px #555;
+	    }
+	    87% {
+				box-shadow: 0 0 0 5px #666, 0 0 0 20px #333;
+	    }
+	    100% {
+				box-shadow: 0 0 0 5px #666, 0 0 0 20px #333;
+	    }
+	}
+
+	/* Standard syntax */
+	@keyframes dark {
+	    0% {
+				box-shadow: 0 0 0 5px #666;
+	    }
+	    12% {
+				box-shadow: 0 0 0 5px #999, 0 0 0 10px #666;
+	    }
+	    25% {
+				box-shadow: 0 0 0 5px #bbb, 0 0 0 10px #999, 0 0 0 15px #666;
+	    }
+	    37% {
+				box-shadow: 0 0 0 5px #ddd, 0 0 0 10px #bbb, 0 0 0 15px #999, 0 0 0 20px #666;
+	    }
+	    50% {
+				box-shadow: 0 0 0 5px #eee, 0 0 0 10px #ddd, 0 0 0 15px #bbb, 0 0 0 20px #999;
+	    }
+	    62% {
+				box-shadow: 0 0 0 5px #bbb, 0 0 0 10px #eee, 0 0 0 15px #ddd, 0 0 0 20px #bbb;
+	    }
+	    75% {
+				box-shadow: 0 0 0 5px #999, 0 0 0 15px #eee, 0 0 0 20px #ddd;
+	    }
+	    87% {
+				box-shadow: 0 0 0 5px #666, 0 0 0 20px #eee;
+	    }
+	    100% {
+				box-shadow: 0 0 0 5px #333, 0 0 0 20px #eee;
+	    }
+	}
+}
