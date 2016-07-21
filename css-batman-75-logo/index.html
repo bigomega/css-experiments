@@ -1,0 +1,83 @@
+<html>
+	<head>
+		<!-- Facebook headers -->
+		<meta property="og:title" content="CSS Art - Batman">
+		<meta property="og:description" content="Batman 75th anniversary logo using basic css">
+		<meta property="og:type" content="website">
+		<meta property="og:image" content="http://media.dcentertainment.com/sites/default/files/imce/2014/03-MAR/Batman75_logo_1COLOR_blk_580_53337eb4cb4440.11378405.jpg">
+
+		<!-- Twitter cards -->
+		<meta name="twitter:card" content="summary">
+		<meta name="twitter:title" content="CSS Art - Batman">
+		<meta name="twitter:description" content="Batman 75th anniversary logo using basic css">
+		<meta name="twitter:image" content="http://media.dcentertainment.com/sites/default/files/imce/2014/03-MAR/Batman75_logo_1COLOR_blk_580_53337eb4cb4440.11378405.jpg">
+
+		<script type="text/javascript">
+		  WebFontConfig = {
+		    google: { families: [ 'Raleway:400,700:latin' , 'Play:400:latin'] }
+		  };
+		  (function() {
+		    var wf = document.createElement('script');
+		    wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+		      '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+		    wf.type = 'text/javascript';
+		    wf.async = 'true';
+		    var s = document.getElementsByTagName('script')[0];
+		    s.parentNode.insertBefore(wf, s);
+		  })();
+	  </script>
+		<title>Batman Logo in CSS (Bharath)</title>
+		<link rel="stylesheet" type="text/css" href="./style.css">
+		<link rel="icon" type="image/png" href="./favicon.png">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+	</head>
+	<body class="white hide-shadow">
+		<div class="guide"></div>
+
+		<div id="container">
+			<div class="head-container white">
+				<div class="head black-border">
+					<div class="horn-left black-border"></div>
+					<div class="scalp black"></div>
+					<div class="horn-right black-border"></div>
+				</div>
+			</div>
+			<div class="body black">
+				<div class="left-end white"></div>
+				<div class="left-mid white"></div>
+				<div class="right-end white"></div>
+				<div class="right-mid white"></div>
+				<div class="text-75 toggle-75">75</div>
+				<div class="desc">
+					<div>75 years <span>of</span> batman</div>
+				</div>
+			</div>
+		</div>
+		<a href="http://www.dccomics.com/blog/2014/03/27/warner-bros-entertainment-and-dc-entertainment-celebrate-batmans-75th-anniversary" target="_blank" title="dc comics" class="more-details">read more >></a>
+		<div id="sun" class="wait"></div>
+		<a href="http://bharathraja.in" class="author wait" title="Mr. Fancy-Hat">
+			<img src="./bigomega.jpg">
+			<div class="text">
+				<div class="intro">Created By</div>
+				<div class="name">bigOmega</div>
+			</div>
+		</a>
+		<script type="text/javascript">
+			light = function(){
+				document.body.classList.toggle('off');
+				var classes = document.getElementsByClassName('toggle-75');
+				for(var i = 0; i < classes.length; i++){
+					classes[i].classList.toggle('hide');
+				}
+			};
+			document.getElementById('sun').onclick = light;
+			window.onload = function(){
+				setTimeout(function(){
+					document.documentElement.classList.add('loaded');
+				}, 5000);
+			};
+			if(navigator.vendor.toLowerCase().indexOf('google') > -1)
+				document.body.classList.remove('hide-shadow');
+		</script>
+	</body>
+</html>

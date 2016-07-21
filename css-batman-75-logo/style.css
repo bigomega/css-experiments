@@ -1,0 +1,578 @@
+body{
+	/*overflow: hidden;*/
+}
+
+.guide{
+	width: 1px;
+	height: 100%;
+	position: absolute;
+	left: 50%;
+	background: rgb(0, 216, 255);
+	z-index: 1000;
+	display: none;
+}
+
+#container{/*
+	position: absolute;
+	width: 100%;
+	left: 50%;
+	margin-left: -580px;*/
+	width: 1180px;
+	padding-left: 15px;
+	margin: 0px auto;
+	overflow: hidden;
+
+
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+@media(min-height: 550px){
+	#container{
+		position: absolute;
+		/*left: calc(50% - 580px);*/
+		left: 50%;
+		margin-left: -580px;
+		top: 50%;
+		margin-top: -240px;
+	}
+}
+@media(max-width: 1100px){
+	#container{
+		zoom: 60%;
+	}
+}
+@media(max-width: 680px){
+	#container{
+		zoom: 30%;
+	}
+}
+
+#container > .head-container{
+	width: 500px;
+	height: 150px;
+	border-radius: 100px;
+	position: relative;
+	left: 330px;
+	z-index: 1;
+	border-bottom-left-radius: 450px 180px;
+	border-bottom-right-radius: 450px 190px;
+}
+.off #container > .head-container{
+	box-shadow: 0px -50px 60px -50px #fff inset, 30px -10px 60px -40px #fff inset, -30px -10px 60px -40px #fff inset;
+}
+
+#container > .head-container > .head{
+	width: 100px;
+	height: 100px;
+	position: absolute;
+	bottom: -1px;
+	left: 50%;
+	margin-left: -55px;
+	border-bottom-width: 55px;
+	border-bottom-style: solid;
+	border-left: 5px solid transparent;
+	border-right: 5px solid transparent;
+	height: 0;
+	width: 100px;
+}
+
+#container > .head-container > .head > .horn-left,
+#container > .head-container > .head > .horn-right{
+	position: absolute;
+	top: -58px;
+	width: 0px;
+	height: 0;
+	border-bottom-width: 60px;
+	border-bottom-style: solid;
+}
+
+#container > .head-container > .head > .horn-left{
+	left: 0;
+	border-left: 5px solid transparent;
+	border-right: 20px solid transparent;
+}
+
+#container > .head-container > .head > .horn-right{
+	right: 0px;
+	border-right: 5px solid transparent;
+	border-left: 20px solid transparent;
+}
+
+#container > .head-container > .head > .scalp{
+	width: 80px;
+	height: 60px;
+	position: absolute;
+	left: 10px;
+	top: -10px;
+	border-top-left-radius: 120px 50px;
+	border-top-right-radius: 120px 50px;
+}
+.off #container > .head-container > .head > .scalp{
+	box-shadow: 0px 10px 60px 10px #fff;
+}
+
+#container > .body{
+	width: 1160px;
+	height: 390px;
+	position: relative;
+	top: -125px;
+	border-top-left-radius: 350px 290px;
+	border-top-right-radius: 350px 290px;
+}
+.off #container > .body{
+	box-shadow: 0 0 40px -5px #fff;
+}
+
+#container > .body > .left-end{
+
+	position: absolute;
+	width: 310px;
+	height: 220px;
+	bottom: -60px;
+	left: -30px;
+	border-top-right-radius: 370px 140px;
+	border-bottom-right-radius: 170px 140px;
+	/* border-top-left-radius: 120px 100px; */
+	-moz-transform: rotate(-30deg);
+	-o-transform: rotate(-30deg);
+	-ms-transform: rotate(-30deg);
+	-webkit-transform: rotate(-30deg);
+	transform: rotate(-30deg);
+}
+.off #container > .body > .left-end{
+  box-shadow: -50px 25px 60px -60px #fff Inset;
+}
+
+#container > .body > .left-mid{
+	position: absolute;
+	width: 360px;
+	height: 240px;
+	bottom: -90px;
+	left: 230px;
+	border-top-left-radius: 170px 150px;
+	border-top-right-radius: 250px 190px;
+	-moz-transform: rotate(10deg);
+	-o-transform: rotate(10deg);
+	-ms-transform: rotate(10deg);
+	-webkit-transform: rotate(10deg);
+	transform: rotate(10deg);
+}
+.off #container > .body > .left-mid{
+	box-shadow: -10px 50px 60px -50px #fff Inset;
+}
+
+#container > .body > .right-mid{
+	position: absolute;
+	width: 360px;
+	height: 240px;
+	bottom: -90px;
+	right: 230px;
+	border-top-right-radius: 170px 150px;
+	border-top-left-radius: 250px 190px;
+	-moz-transform: rotate(-10deg);
+	-o-transform: rotate(-10deg);
+	-ms-transform: rotate(-10deg);
+	-webkit-transform: rotate(-10deg);
+	transform: rotate(-10deg);
+}
+.off #container > .body > .right-mid{
+	box-shadow: 10px 50px 60px -50px #fff Inset;
+}
+
+#container > .body > .right-end{
+	position: absolute;
+	width: 310px;
+	height: 220px;
+	bottom: -60px;
+	right: -30px;
+	border-top-left-radius: 370px 140px;
+	border-bottom-left-radius: 170px 140px;
+	-moz-transform: rotate(30deg);
+	-o-transform: rotate(30deg);
+	-ms-transform: rotate(30deg);
+	-webkit-transform: rotate(30deg);
+	transform: rotate(30deg);
+}
+.off #container > .body > .right-end{
+	box-shadow: 50px 25px 60px -60px #fff Inset;
+}
+
+#container > .body > .text-75{
+	;position: absolute;
+	color: #fff;
+	top: 60px;
+	letter-spacing: -10px;
+	font-size: 230px;
+	font-weight: 600;
+	font-family: 'Raleway', sans-serif;
+	width: 100%;
+	text-align: center;
+
+  -webkit-transition: opacity 0.5s linear;
+  -moz-transition: opacity 0.5s linear;
+  -ms-transition: opacity 0.5s linear;
+  -o-transition: opacity 0.5s linear;
+	transition: opacity 0.5s linear;
+}
+
+#container > .body > .toggle-75.hide{
+	opacity: 0;
+
+  -webkit-transition: none;
+  -moz-transition: none;
+  -ms-transition: none;
+  -o-transition: none;
+	transition: none;
+}
+
+#container > .body > .desc{
+	position: absolute;
+	top: 430px;
+	width: 100%;
+	maxwidth: 1160px;
+	text-align: center;
+	text-transform: uppercase;
+	font-family: 'Play', sans-serif;
+	font-size: 45px;
+	overflow: hidden;
+}
+
+#container > .body > .desc > div{
+  -webkit-transform:scale(1.4,1);
+  -moz-transform:scale(1.4,1);
+  -ms-transform:scale(1.4,1);
+  -o-transform:scale(1.4,1);
+	transform: scale(1.4,1);
+}
+#container > .body > .desc > div > span{
+	font-size: 35px;
+}
+
+.more-details{
+	font-family: 'Raleway', sans-serif;
+	color: #000;
+	background-color: #f5f5f5;
+	position: fixed;
+	bottom: 0;
+	right: 0;
+	padding: 10px 15px;
+}
+.off .more-details{
+	display: none;
+}
+
+#sun{
+	width: 60px;
+	height: 60px;
+	position: fixed;
+	top: 20px;
+	right: 20px;
+	background: #FCD440;
+	border-radius: 50px;
+	cursor: pointer;
+	box-shadow: 0px 0px 20px 0px #FDB813;
+}
+.off #sun{
+	background: #fff;
+	box-shadow: -1px 1px 9px 0px #fff;
+}
+.off #sun:before{
+	content: ' ';
+	background: #000;
+	width: 60px;
+	height: 60px;
+	position: absolute;
+	left: 10px;
+	box-shadow: 10px -10px 20px -15px #fff inset;
+	bottom: 10px;
+	border-radius: 50px;
+}
+
+.author{
+	font-family: 'Raleway', sans-serif;
+	position: fixed;
+	left: 0;
+	top: 0;
+	padding: 10px;
+	padding-right: 30px;
+	margin: 20px 0 0 20px;
+	color: #000;
+	background-color: transparent;
+	border-radius: 100px;
+}
+
+.author > img{
+	width: 60px;
+	border-radius: 100px;
+	box-shadow: 0 0 0 5px #eee;
+	float: left;
+}
+.off .author > img{
+	box-shadow: 0 0 0 5px #333;
+}
+
+.author:hover{
+	background-color: #eee;
+}
+.off .author:hover{
+	background-color: #333;
+}
+.author:hover > .text{
+	opacity: 1;
+	z-index: 0;
+}
+
+.author,
+.author > .text{
+  -webkit-transition: all 0.3s linear;
+  -moz-transition: all 0.3s linear;
+  -ms-transition: all 0.3s linear;
+  -o-transition: all 0.3s linear;
+	transition: all 0.3s linear;
+}
+
+.author > .text{
+	float: left;
+	margin-left: 20px;
+	margin-top: 3px;
+	opacity: 0;
+	z-index: -1;
+}
+.off .author > .text{
+	color: #fff;
+}
+
+.author > .text > .intro{
+	line-height: 23px;
+	font-size: 14px;
+}
+
+.author > .text > .name{
+	text-decoration: underline;
+	font-size: 24px;
+	font-weight: 400;
+}
+
+
+/* Chrome, Safari, Opera */
+@-webkit-keyframes bright {
+    0% {
+			box-shadow: 0 0 0 5px #666;
+    }
+    12% {
+			box-shadow: 0 0 0 5px #999, 0 0 0 10px #666;
+    }
+    25% {
+			box-shadow: 0 0 0 5px #bbb, 0 0 0 10px #999, 0 0 0 15px #666;
+    }
+    37% {
+			box-shadow: 0 0 0 5px #ddd, 0 0 0 10px #bbb, 0 0 0 15px #999, 0 0 0 20px #666;
+    }
+    50% {
+			box-shadow: 0 0 0 5px #eee, 0 0 0 10px #ddd, 0 0 0 15px #bbb, 0 0 0 20px #999;
+    }
+    62% {
+			box-shadow: 0 0 0 5px #ccc, 0 0 0 10px #eee, 0 0 0 15px #ddd, 0 0 0 20px #bbb;
+    }
+    75% {
+			box-shadow: 0 0 0 5px #ccc, 0 0 0 15px #eee, 0 0 0 20px #ddd;
+    }
+    87% {
+			box-shadow: 0 0 0 5px #bbb, 0 0 0 20px #eee;
+    }
+    100% {
+			box-shadow: 0 0 0 5px #bbb, 0 0 0 20px #eee;
+    }
+}
+
+/* Standard syntax */
+@keyframes bright {
+    0% {
+			box-shadow: 0 0 0 5px #666;
+    }
+    12% {
+			box-shadow: 0 0 0 5px #999, 0 0 0 10px #666;
+    }
+    25% {
+			box-shadow: 0 0 0 5px #bbb, 0 0 0 10px #999, 0 0 0 15px #666;
+    }
+    37% {
+			box-shadow: 0 0 0 5px #ddd, 0 0 0 10px #bbb, 0 0 0 15px #999, 0 0 0 20px #666;
+    }
+    50% {
+			box-shadow: 0 0 0 5px #eee, 0 0 0 10px #ddd, 0 0 0 15px #bbb, 0 0 0 20px #999;
+    }
+    62% {
+			box-shadow: 0 0 0 5px #bbb, 0 0 0 10px #eee, 0 0 0 15px #ddd, 0 0 0 20px #bbb;
+    }
+    75% {
+			box-shadow: 0 0 0 5px #999, 0 0 0 15px #eee, 0 0 0 20px #ddd;
+    }
+    87% {
+			box-shadow: 0 0 0 5px #666, 0 0 0 20px #eee;
+    }
+    100% {
+			box-shadow: 0 0 0 5px #333, 0 0 0 20px #eee;
+    }
+}
+/* Chrome, Safari, Opera */
+@-webkit-keyframes dark {
+    0% {
+			box-shadow: 0 0 0 5px #aaa;
+    }
+    12% {
+			box-shadow: 0 0 0 5px #999, 0 0 0 10px #aaa;
+    }
+    25% {
+			box-shadow: 0 0 0 5px #777, 0 0 0 10px #999, 0 0 0 15px #aaa;
+    }
+    37% {
+			box-shadow: 0 0 0 5px #555, 0 0 0 10px #777, 0 0 0 15px #999, 0 0 0 20px #aaa;
+    }
+    50% {
+			box-shadow: 0 0 0 5px #333, 0 0 0 10px #555, 0 0 0 15px #777, 0 0 0 20px #999;
+    }
+    62% {
+			box-shadow: 0 0 0 5px #454545, 0 0 0 10px #333, 0 0 0 15px #555, 0 0 0 20px #777;
+    }
+    75% {
+			box-shadow: 0 0 0 5px #454545, 0 0 0 15px #333, 0 0 0 20px #555;
+    }
+    87% {
+			box-shadow: 0 0 0 5px #666, 0 0 0 20px #333;
+    }
+    100% {
+			box-shadow: 0 0 0 5px #666, 0 0 0 20px #333;
+    }
+}
+
+/* Standard syntax */
+@keyframes dark {
+    0% {
+			box-shadow: 0 0 0 5px #666;
+    }
+    12% {
+			box-shadow: 0 0 0 5px #999, 0 0 0 10px #666;
+    }
+    25% {
+			box-shadow: 0 0 0 5px #bbb, 0 0 0 10px #999, 0 0 0 15px #666;
+    }
+    37% {
+			box-shadow: 0 0 0 5px #ddd, 0 0 0 10px #bbb, 0 0 0 15px #999, 0 0 0 20px #666;
+    }
+    50% {
+			box-shadow: 0 0 0 5px #eee, 0 0 0 10px #ddd, 0 0 0 15px #bbb, 0 0 0 20px #999;
+    }
+    62% {
+			box-shadow: 0 0 0 5px #bbb, 0 0 0 10px #eee, 0 0 0 15px #ddd, 0 0 0 20px #bbb;
+    }
+    75% {
+			box-shadow: 0 0 0 5px #999, 0 0 0 15px #eee, 0 0 0 20px #ddd;
+    }
+    87% {
+			box-shadow: 0 0 0 5px #666, 0 0 0 20px #eee;
+    }
+    100% {
+			box-shadow: 0 0 0 5px #333, 0 0 0 20px #eee;
+    }
+}
+
+.author:hover > img,
+.author > img:hover{
+	box-shadow: 0 0 0 5px #bbb, 0 0 0 20px #eee;
+  animation: bright 0.5s linear 0 1 normal;
+  -webkit-animation: bright 0.5s linear 0 1 normal; /* Chrome, Safari, Opera */
+}
+
+.off .author:hover > img,
+.off .author > img:hover{
+	box-shadow: 0 0 0 5px #666, 0 0 0 20px #333;
+  animation: dark 0.5s linear 0 1 normal;
+  -webkit-animation: dark 0.5s linear 0 1 normal; /* Chrome, Safari, Opera */
+}
+
+.white{
+	background-color: #fff;
+}
+.off .white{
+	background-color: #000;
+}
+
+.black-border{
+	border-color: #000;
+}
+.off .black-border{
+	border-color: #fff;
+}
+.black{
+	background-color: #000;
+}
+.off .black{
+	background-color: #fff;
+}
+
+body.off{
+	background-color: #000;
+}
+
+.wait{
+	opacity: 0;
+}
+.wait img{
+	display: none;
+}
+.loaded.wf-inactive .wait img,
+.loaded.wf-active .wait img{
+	display: block;
+}
+.loaded.wf-inactive .wait,
+.loaded.wf-active .wait{
+	opacity: 1;
+  -webkit-transition: opacity 0.5s linear;
+  -moz-transition: opacity 0.5s linear;
+  -ms-transition: opacity 0.5s linear;
+  -o-transition: opacity 0.5s linear;
+	transition: opacity 0.75s linear;
+}
+
+.text-75,
+.wf-loading .text-75
+{
+	visibility: hidden;
+  opacity: 0;
+}
+
+.wf-active .text-75,
+.wf-inactive .text-75
+{
+	visibility: visible;
+  opacity: 1;
+}
+
+/* Show shadows only in chrome(rest are crappy, i dont want to rewrite them all. not worth it) */
+body.off.hide-shadow #container > .head-container{
+	box-shadow: none;
+}
+body.off.hide-shadow #container > .head-container > .head > .scalp{
+	box-shadow: none;
+}
+body.off.hide-shadow #container > .body{
+	box-shadow: none;
+}
+body.off.hide-shadow #container > .body > .left-end{
+	box-shadow: none;
+}
+body.off.hide-shadow #container > .body > .left-mid{
+	box-shadow: none;
+}
+body.off.hide-shadow #container > .body > .right-end{
+	box-shadow: none;
+}
+body.off.hide-shadow #container > .body > .right-mid{
+	box-shadow: none;
+}
