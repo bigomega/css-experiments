@@ -1,0 +1,118 @@
+@import "mixins.less";
+
+@bgs: #00CFFF, #00496F, #F3FFD7, #000;
+@bg: extract(@bgs, 4); /* VARIABLE */
+
+@px: 15px; /* VARIABLE */
+
+@axe-stick-length: 8; /* VARIABLE */
+@axe-black: #302F2B;
+@axe-brown: #734411;
+@axe-grey: #ccdde0;
+@axe-dark-grey: #5f666b;
+@animation-delay: 0.75s;
+
+@block-sets: #000 #e65e15, #5A0000 #c90000;
+@use-block-set: 2; /* VARIABLE */
+@block-bg: extract( extract(@block-sets, @use-block-set), 1);
+@brick-color: extract( extract(@block-sets, @use-block-set), 2);
+@block-width: 14*@px;
+@block-height: 14*@px;
+@brick-gap: ceil(@px/2);
+@brick-width: @block-width/2  - 0.5*@brick-gap;
+@brick-height: @brick-width/2;
+
+body{
+	font-family: sans-serif;
+	background-color: @bg;
+	margin: 0;
+
+	.author{
+		opacity: 0;
+		.transition(none);
+	}
+
+	.main-content{
+		width: 8*@px + @block-width;
+		height: @block-height;
+		position: absolute;
+		left: ~"calc(50% - " @block-width/2 ~")";
+		top: 50%;
+
+		@keyframes pick{
+			0% { .transform(rotate(-70deg)) }
+			100% { .transform(rotate(-130deg)) }
+		}
+		@-webkit-keyframes pick {
+			0% { .transform(rotate(-70deg)) }
+			100% { .transform(rotate(-130deg)) }
+		}
+
+		.minecraft-axe{
+			.animation(pick @animation-delay ease-out 0 infinite alternate);
+			.transform(rotate(-70deg));
+			opacity: 0;
+			width: @px;
+			height: @px;
+			background: @axe-brown;
+			border: 1px solid @axe-brown;
+			border-bottom: none;
+			border-right: none;
+			.axe-stick(@axe-stick-length);
+			@hdl: @axe-stick-length*@px;
+			box-shadow+: @hdl @hdl @axe-grey, @hdl+@px @hdl @axe-grey, @hdl @hdl+@px @axe-grey, @hdl+@px (@hdl - @px) @axe-grey, (@hdl - @px) @hdl+@px @axe-grey, @hdl+2*@px (@hdl - @px) @axe-grey, (@hdl - @px) @hdl+2*@px @axe-grey, @hdl+2*@px (@hdl - 2*@px) @axe-grey, @hdl+2*@px (@hdl - 3*@px) @axe-grey, @hdl+2*@px (@hdl - 4*@px) @axe-grey, @hdl+2*@px (@hdl - 5*@px) @axe-grey, (@hdl - 2*@px) @hdl+2*@px @axe-grey, (@hdl - 3*@px) @hdl+2*@px @axe-grey, (@hdl - 4*@px) @hdl+2*@px @axe-grey, (@hdl - 5*@px) @hdl+2*@px @axe-grey;
+			box-shadow+: @hdl @hdl+2*@px @axe-dark-grey, @hdl+2*@px @hdl @axe-dark-grey, @hdl+3*@px (@hdl - @px) @axe-dark-grey, @hdl+3*@px (@hdl - 2*@px) @axe-dark-grey, @hdl+3*@px (@hdl - 3*@px) @axe-dark-grey, @hdl+3*@px (@hdl - 4*@px) @axe-dark-grey, @hdl+3*@px (@hdl - 5*@px) @axe-dark-grey, (@hdl - @px) @hdl+3*@px @axe-dark-grey, (@hdl - 2*@px) @hdl+3*@px @axe-dark-grey, (@hdl - 3*@px) @hdl+3*@px @axe-dark-grey, (@hdl - 4*@px) @hdl+3*@px @axe-dark-grey, (@hdl - 5*@px) @hdl+3*@px @axe-dark-grey, (@hdl - 6*@px) @hdl+2*@px @axe-dark-grey, @hdl+2*@px (@hdl - 6*@px) @axe-dark-grey, @hdl+@px (@hdl - 2*@px) @axe-dark-grey, @hdl+@px (@hdl - 3*@px) @axe-dark-grey, @hdl+@px (@hdl - 4*@px) @axe-dark-grey, @hdl+@px (@hdl - 5*@px) @axe-dark-grey, (@hdl - 2*@px) @hdl+@px @axe-dark-grey, (@hdl - 3*@px) @hdl+@px @axe-dark-grey, (@hdl - 4*@px) @hdl+@px @axe-dark-grey, (@hdl - 5*@px) @hdl+@px @axe-dark-grey;
+			box-shadow+: @hdl+@px @hdl+@px @axe-brown, @hdl+2*@px @hdl+2*@px @axe-brown, @hdl+@px @hdl+2*@px @axe-black, @hdl+2*@px @hdl+@px @axe-black;
+
+			.axe-stick(@n, @i: 1) when (@i =< @n) {
+				box-shadow+: (@i - 1)*@px (@i - 1)*@px @axe-brown, (@i - 1)*@px @i*@px @axe-black, @i*@px (@i - 1)*@px @axe-black;
+				.axe-stick(@n, (@i + 1));
+			}
+		}
+		.block-container{
+			float: right;
+			margin-top: -50px;
+			width: @block-width;
+			height: @block-height - @brick-gap;
+			background-color: @block-bg;
+			/*border: @brick-gap solid @block-bg;*/
+			overflow: hidden;
+			.block{
+				width: @brick-width;
+				height: @brick-height;
+				background-color: @bg;
+				box-shadow+: (@block-width - 1.5*@brick-width) 0 @bg;
+				.brick-total(4, 3);
+
+				.brick-total(@x, @y) when (@x > 0){
+					.brick-vertical(@y);
+					.brick-total((@x - 1), @y);
+
+					.brick-vertical(@y1) when (@y1 > 0) {
+					  box-shadow+: mod(@x,2)*(@brick-width/-2)+(@y1 - 1)*@brick-width+((@y1 - 1)*@brick-gap) (@x - 1)*@brick-height+((@x - 1)*@brick-gap) @brick-color;
+					  .brick-vertical((@y1 - 1));
+					}
+				}
+			}
+		}
+	}
+}
+
+.show-author .author{
+	.transition(opacity 1s ease-in);
+	opacity: 1;
+}
+
+.loaded body .main-content .minecraft-axe{
+	.transition(opacity 3s ease-in);
+	opacity: 1;
+}
+
+@media(max-width: 650px){
+	body{
+		.main-content{
+			margin-top: 90px;
+			.transform(scale(0.5));
+		}
+	}
+}
