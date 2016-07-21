@@ -1,0 +1,106 @@
+@import "mixins.less";
+
+@sky-blue: #0096d6;
+@pyramid: #f5e838;
+@pyramid-dark: #c2b434;
+
+@circle-size: 400px;
+
+body{
+	font-family: 'Lato', sans-serif;
+
+	.circle-position(@size){
+		@circle-size-half: @size/2;
+		width: @size;
+		height: @size;
+		left: ~"calc(50% - @{circle-size-half})";
+		top: ~"calc(50% - @{circle-size-half})";
+	}
+	.pyramid-geometry(@size){
+			left: @size/2 - (@size - 80px)/2;
+			bottom: 0px;
+			border-bottom: @size/2 - 10px solid @pyramid;
+			border-left: (@size - 80px)/2  solid transparent;
+			border-right: (@size - 80px)/2 solid transparent;
+	}
+
+	.heading{
+		font-size: 40px;
+		font-weight: bold;
+		text-align: center;
+		padding: 10px;
+		background: rgba(255, 255, 255, 0.5);
+		@media(max-width: 680px){
+			font-size: 30px;
+		}
+	}
+
+	.pie{
+		.circle-position(@circle-size);
+		background: @sky-blue;
+		position: absolute;
+		border-radius: 1500px;
+		overflow: hidden;
+		z-index: -1;
+
+		&:before{
+			content: ' ';
+			position: absolute;
+			.pyramid-geometry(@circle-size);
+		}
+
+		&:after{
+			content: ' ';
+			position: absolute;
+			left: 235px;
+			bottom: 11px;
+			border-bottom: 200px solid @pyramid-dark;
+			border-right: 70px solid transparent;
+			.transform(rotate(-22deg));
+		}
+
+		@media(max-width: 680px){
+			.circle-position(@circle-size/2);
+			&:before{
+				.pyramid-geometry(@circle-size/2);
+			}
+			&:after{
+				left: 135px;
+				bottom: -89px;
+				border-bottom: 200px solid @pyramid-dark;
+				border-right: 70px solid transparent;
+				.transform(rotate(-22deg));
+			}
+		}
+	}
+
+	.legend{
+		position: absolute;
+		left: ~"calc(50% - 200px + 450px)";
+		top: ~"calc(50% - 80px)";
+		background: rgba(255, 255, 255, 0.5);
+		padding: 10px;
+		padding-bottom: 0;
+		> div {
+			border-left: 20px solid #fff;
+			padding-left: 10px;
+			height: 20px;
+			margin-bottom: 20px;
+		}
+		.sky{
+			border-color: @sky-blue;
+		}
+		.sunny{
+			border-color: @pyramid;
+		}
+		.shady{
+			border-color: @pyramid-dark;
+		}
+		@media(max-width: 680px){
+			left: ~"calc(50% - 200px + 320px)";
+			font-size: 14px;
+			border-left-width: 10px;
+			height: 10px;
+		}
+	}
+}
