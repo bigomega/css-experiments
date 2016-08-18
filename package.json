@@ -1,0 +1,19 @@
+{
+  "name": "experiments",
+  "version": "0.1.0",
+  "description": "bharathraja-labs.github.com ===========================",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bigomega/experiments.git"
+  },
+  "author": "bigOmega",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bigomega/experiments/issues"
+  },
+  "homepage": "https://github.com/bigomega/experiments#readme"
+}
