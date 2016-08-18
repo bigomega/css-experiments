@@ -15,6 +15,8 @@ keyCodeToChar[-1] = 'Click'
 keyCodeToChar[-2] = 'Point-Click'
 keyCharToCode['Point-Click'] = -2
 keyCharToCode['Click'] = -1
+
+// for default values, only use alphabets. Special characters codes are very inconsistent
 var keyBinding = {
   Q: keyCharToCode.Q,
   W: keyCharToCode.W,
@@ -22,104 +24,158 @@ var keyBinding = {
   R: keyCharToCode.R,
   D: keyCharToCode.D,
   F: keyCharToCode.F,
-}
-var spells = {
-  'cold snap': { combo: { Q:3 }, target: true, unit: true },
-  'ghost walk': { combo: { Q:2, W:1 } },
-  'tornado': { combo: { Q:1, W:2 }, target: true },
-  'emp': { combo: { W:3 }, target: true, radius: 675 },
-  'alacrity': { combo: { W:2, E:1 }, target: true, unit: true },
-  'chaos meteor': { combo: { W:1, E:2 }, target: true },
-  'sun strike': { combo: { E:3 }, target: true, radius: 175 },
-  'forge spirit': { combo: { E:2, Q:1 } },
-  'ice wall': { combo: { E:1, Q:2 } },
-  'deafening blast': { combo: { Q:1, W:1, E:1 }, target: true },
-  _list: ['cold snap' 'ghost walk', 'tornado', 'emp', 'alacrity', 'chaos meteor', 'sun strike', 'forge spirit', 'ice wall', 'deafening blast']
+  _list: 'QWERDF'.split(''),
+  _getSpell: function(keyCode) {
+    var _this = this
+    return this._list.filter(function(x){return _this[x] === keyCode})[0] || '_'
+  },
 }
 
 
-var userCombo = []
-function reset() {
-  userCombo = []
-}
+var invoker = {
+  elements: [],
+  spellSlots: [],
+  cast: function(activeSpell) {
+    switch (activeSpell) {
+      case 'Q':
+      case 'W':
+      case 'E':
+        this.elements.push(activeSpell)
+        this.elements.length > 3 && this.elements.shift()
+        this.render()
+        break
 
-function test() {
-  // 1 - if done right
-  // 0 - if right but not done yet
-  // -1 - if done wrong
-  var isEqual = userCombo.join('') === combo.slice(0, userCombo.length).join('')
-  if (!isEqual) {
-    return -1
+      case 'R':
+        this.spellSlots.push(this.getCurrentSpell())
+        this.spellSlots.length > 2 && this.spellSlots.shift()
+        this.render()
+        break
+
+      case 'D':
+      break
+
+      case 'F':
+      break
+
+      case 'Click':
+      break
+    }
+  },
+
+  spellsList: {
+    QQQ: { name: 'cold snap', target: true, unit: true },
+    QQW: { name: 'ghost walk' },
+    QWW: { name: 'tornado', target: true },
+    WWW: { name: 'emp', target: true, radius: 675 },
+    EWW: { name: 'alacrity', target: true, unit: true },
+    EEW: { name: 'chaos meteor', target: true },
+    EEE: { name: 'sun strike', target: true, radius: 175 },
+    EEQ: { name: 'forge spirit' },
+    EQQ: { name: 'ice wall' },
+    EQW: { name: 'deafening blast', target: true },
+    _list: ['QQQ','QQW','QWW','WWW','EWW','EEW','EEE','EEQ','EQQ','EQW'],
+    _nameList: ['cold snap', 'ghost walk', 'tornado', 'emp', 'alacrity', 'chaos meteor', 'sun strike', 'forge spirit', 'ice wall', 'deafening blast'],
+    _getByName: function(name) {
+      if (this._nameList.indexOf(name) < 0)
+        return ''
+      var _this = this
+      var qwe = this._list.filter(function(x){return _this[x].name === name})[0] || ''
+      return this[qwe] || {}
+    },
+  },
+
+  getCurrentSpell: function() {
+    var qwe = this.elements.slice().sort().join('')
+    return this.spellsList[qwe] || {}
+  },
+
+  reset: function() {
+    this.elements = []
+    this.spellSlots = []
+  },
+
+  render: function() {
+    console.log(this.elements)
+    console.log(this.spellSlots.map(function(x){return x.name}))
   }
-
-  return +(userCombo.length === combo.length)
 }
 
 
-var keyBindHappening
-
+var MAX_TIME_CAP = 20 * 1000
 var TIME_TICK = 1
 var timer = null
-// for default values, only use alphabets. Special characters codes are very inconsistent
-var combo = 'Q W E R D'
-console.log(combo.split(' ').join(' > '))
-combo = combo.split(' ').map(str => keyCharToCode[str])
-console.log(combo)
-var startTime, currentTime
-var started
-function start(combo) {
-  startTime = new Date()
-  currentTime = new Date()
-  timer = window.setInterval(function(){
-    currentTime = new Date()
-    $('.timer').html(currentTime - startTime)
-    // render  currentTime - startTime
-  }, TIME_TICK)
+var startTime, timeTaken
+
+function start(expectedCombo) {
+  invoker.reset()
+  $(document).bind('keydown.game', function(event) {
+    var key = event.which || event.key || event.keyIdentifier || event.keyCode
+    if (event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) {
+      return
+    }
+    console.log('-----> down', keyCodeToChar[key], key)
+
+    if (!invoker.elements.length) {
+      startTime = new Date()
+      timeTaken = 0
+      timer = window.setInterval(function(){
+        timeTaken = (new Date()) -  startTime
+        $('.timer').html(timeTaken)
+        timeTaken > MAX_TIME_CAP && stop(1, 'You took too long.')
+      }, TIME_TICK)
+    }
+    invoker.cast(keyBinding._getSpell(key))
+    switch (expectedCombo[0].type) {
+      case 'R':
+        if ((invoker.spellSlots[0] || {}).name === expectedCombo[0].spell) {
+          expectedCombo.shift()
+          !expectedCombo.length && stop()
+        }
+        break
+
+      case 'Q':
+      case 'W':
+      case 'E':
+        if (invoker.elements.indexOf(expectedCombo[0].type) > 0) {
+          expectedCombo.shift()
+          !expectedCombo.length && stop()
+        }
+        break
+
+      case 'D':
+      case 'F':
+      case 'Click':
+        break
+    }
+    event.preventDefault()
+    event.stopPropagation()
+  })
 }
 
-
-started = true
-$(document).keydown(function(event) {
-  var key = event.which || event.key || event.keyIdentifier || event.keyCode
-  console.log('-----> down', keyCodeToChar[key], key)
-  // console.log(key, 'alt, ctrl, meta, shift', event.altKey, event.ctrlKey, event.metaKey, event.shiftKey)
-
-  if(started) {
-    if (!userCombo.length) {
-      start()
-    }
-    userCombo.push(key)
-    if(test() === -1) {
-      window.clearInterval(timer)
-      console.log('<<<<<<WRONG')
-      window.alert('Sorry, wrong combo')
-      started = false
-    } else if (test() === 1) {
-      window.clearInterval(timer)
-      console.log('<<<<<<RIGHT')
-      window.alert('Whatteey WOW. So fast - ' + (currentTime - startTime)/1000 + ' s')
-      console.log(currentTime - startTime)
-      started = false
-    } else {
-      //
-    }
-    event.preventDefault()
-    event.stopPropagation()
-  } else if(keyBindHappening) {
-    //
-    event.preventDefault()
-    event.stopPropagation()
+function stop(fail, reason) {
+  if (fail) {
+    window.alert('Sorry, you failed. ' + (reason || ''))
+    window.alert('Try again')
+  } else {
+    window.alert('Whatteey WOW. So fast - ' + timeTaken/1000 + ' s')
   }
-})
+  console.log(timeTaken)
+  window.clearInterval(timer)
+  timer = null
+  invoker.reset()
+  $(document).unbind('keydown.game')
+}
+
+start([{type: 'R', spell: 'tornado'}])
 
 
-$(document).keyup(function(event) {
-  var key = event.which || event.key || event.keyIdentifier || event.keyCode
-  console.log('-----> release', keyCodeToChar[key], key)
-})
+// $(document).keyup(function(event) {
+//   var key = event.which || event.key || event.keyIdentifier || event.keyCode
+//   console.log('-----> release', keyCodeToChar[key], key)
+// })
 
 
-$(document).keypress(function(event) {
-  var key = event.which || event.key || event.keyIdentifier || event.keyCode
-  console.log('-----> press', keyCodeToChar[key], key)
-})
+// $(document).keypress(function(event) {
+//   var key = event.which || event.key || event.keyIdentifier || event.keyCode
+//   console.log('-----> press', keyCodeToChar[key], key)
+// })
