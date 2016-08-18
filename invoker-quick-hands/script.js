@@ -40,14 +40,14 @@ var invoker = {
       case 'Q':
       case 'W':
       case 'E':
-        this.elements.push(activeSpell)
-        this.elements.length > 3 && this.elements.shift()
+        this.elements.unshift(activeSpell)
+        this.elements.length > 3 && this.elements.pop()
         this.render()
         break
 
       case 'R':
-        this.spellSlots.push(this.getCurrentSpell())
-        this.spellSlots.length > 2 && this.spellSlots.shift()
+        this.spellSlots.unshift(this.getCurrentSpell())
+        this.spellSlots.length > 2 && this.spellSlots.pop()
         this.render()
         break
 
@@ -106,6 +106,7 @@ var TIME_TICK = 1
 var timer = null
 var startTime, timeTaken
 
+var _keysDown = {}
 function start(expectedCombo) {
   invoker.reset()
   $(document).bind('keydown.game', function(event) {
@@ -113,6 +114,10 @@ function start(expectedCombo) {
     if (event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) {
       return
     }
+    if (_keysDown[key]) {
+      return
+    }
+    _keysDown[key] = true
     console.log('-----> down', keyCodeToChar[key], key)
 
     if (!invoker.elements.length) {
@@ -169,10 +174,11 @@ function stop(fail, reason) {
 start([{type: 'R', spell: 'tornado'}])
 
 
-// $(document).keyup(function(event) {
-//   var key = event.which || event.key || event.keyIdentifier || event.keyCode
-//   console.log('-----> release', keyCodeToChar[key], key)
-// })
+$(document).keyup(function(event) {
+  var key = event.which || event.key || event.keyIdentifier || event.keyCode
+  _keysDown[key] = null
+  // console.log('-----> release', keyCodeToChar[key], key)
+})
 
 
 // $(document).keypress(function(event) {
