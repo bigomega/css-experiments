@@ -45,6 +45,22 @@ body .pie:after {
   -ms-transform: rotate(-22deg);
   -o-transform: rotate(-22deg);
 }
+body .pie.sky:before,
+body .pie.sky:after {
+  content: none;
+}
+body .pie.sunny {
+  background: transparent;
+}
+body .pie.sunny:after {
+  content: none;
+}
+body .pie.shady {
+  background: transparent;
+}
+body .pie.shady:before {
+  content: none;
+}
 @media (max-width: 680px) {
   body .pie {
     width: 200px;
@@ -78,11 +94,17 @@ body .legend {
   padding: 10px;
   padding-bottom: 0;
 }
+body .legend:hover > div {
+  opacity: 0.5;
+}
 body .legend > div {
   border-left: 20px solid #fff;
   padding-left: 10px;
   height: 20px;
   margin-bottom: 20px;
+}
+body .legend > div:hover {
+  opacity: 1;
 }
 body .legend .sky {
   border-color: #0096d6;

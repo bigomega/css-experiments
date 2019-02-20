@@ -59,6 +59,20 @@ body{
 			.transform(rotate(-22deg));
 		}
 
+		&.sky {
+			&:before, &:after {
+				content: none;
+			}
+		}
+		&.sunny {
+			background: transparent;
+			&:after { content: none }
+		}
+		&.shady {
+			background: transparent;
+			&:before { content: none }
+		}
+
 		@media(max-width: 680px){
 			.circle-position(@circle-size/2);
 			&:before{
@@ -81,11 +95,17 @@ body{
 		background: rgba(255, 255, 255, 0.5);
 		padding: 10px;
 		padding-bottom: 0;
+		&:hover > div {
+			opacity: .5;
+		}
 		> div {
 			border-left: 20px solid #fff;
 			padding-left: 10px;
 			height: 20px;
 			margin-bottom: 20px;
+			&:hover {
+				opacity: 1;
+			}
 		}
 		.sky{
 			border-color: @sky-blue;

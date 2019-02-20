@@ -49,5 +49,12 @@
 				<div class="name">bigOmega</div>
 			</div>
 		</a>
+		<script type="text/javascript">
+		var $pie = document.querySelector('.pie')
+		;['sky', 'sunny', 'shady'].map(el => {
+			document.querySelector('.'+el).onmouseover = function(){ $pie.classList.add(el) }
+			document.querySelector('.'+el).onmouseout = function(){ $pie.classList.remove(el) }
+		})
+		</script>
 	</body>
 </html>
