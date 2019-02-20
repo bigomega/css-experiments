@@ -1,4 +1,4 @@
-@import "mixins.less";
+@import "../mixins.less";
 
 @bgs: #00CFFF, #00496F, #F3FFD7, #000;
 @bg: extract(@bgs, 4); /* VARIABLE */
@@ -49,7 +49,7 @@ body{
 		}
 
 		.minecraft-axe{
-			.animation(pick @animation-delay ease-out 0 infinite alternate);
+			.animation(pick @animation-delay ease-out 0s infinite alternate);
 			.transform(rotate(-70deg));
 			opacity: 0;
 			width: @px;

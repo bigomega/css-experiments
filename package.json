@@ -1,9 +1,10 @@
 {
-  "name": "experiments",
+  "name": "css-experiments",
   "version": "0.1.0",
   "description": "bharathraja-labs.github.com ===========================",
   "main": "index.js",
   "scripts": {
+    "lessc": "for file in */style.less; do ./node_modules/.bin/lessc $file ${file/less/css}; done;  ./node_modules/.bin/lessc style.less style.css",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -11,9 +12,15 @@
     "url": "git+https://github.com/bigomega/experiments.git"
   },
   "author": "bigOmega",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/bigomega/experiments/issues"
   },
-  "homepage": "https://github.com/bigomega/experiments#readme"
+  "homepage": "https://github.com/bigomega/experiments#readme",
+  "keywords": [
+    "css"
+  ],
+  "devDependencies": {
+    "less": "^3.9.0"
+  }
 }
