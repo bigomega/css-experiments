@@ -51,40 +51,45 @@ h3 {
     border-bottom-color: black; }
   to {
     border-bottom-color: #8fc045; } }
+
 @-moz-keyframes bigomega_color_b {
   from {
     border-bottom-color: black; }
   to {
     border-bottom-color: #8fc045; } }
+
 @-o-keyframes bigomega_color_b {
   from {
     border-bottom-color: black; }
   to {
     border-bottom-color: #8fc045; } }
+
 @keyframes bigomega_color_b {
   from {
     border-bottom-color: black; }
   to {
     border-bottom-color: #8fc045; } }
+
 @-webkit-keyframes bigomega_color_t {
   to {
     border-top-color: #8fc045; }
   from {
     border-top-color: black; } }
+
 @-moz-keyframes bigomega_color_t {
   to {
     border-top-color: #8fc045; }
   from {
     border-top-color: black; } }
+
 @-o-keyframes bigomega_color_t {
   to {
     border-top-color: #8fc045; }
   from {
     border-top-color: black; } }
+
 @keyframes bigomega_color_t {
   to {
     border-top-color: #8fc045; }
   from {
     border-top-color: black; } }
-
-/*# sourceMappingURL=style.css.map */

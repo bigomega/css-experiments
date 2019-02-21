@@ -4,7 +4,8 @@
   "description": "bharathraja-labs.github.com ===========================",
   "main": "index.js",
   "scripts": {
-    "lessc": "for file in */style.less; do ./node_modules/.bin/lessc $file ${file/less/css}; done;  ./node_modules/.bin/lessc style.less style.css",
+    "sassc": "for file in */style.scss; do node-sass $file ${file/scss/css}; done;",
+    "lessc": "for file in */style.less; do lessc $file ${file/less/css}; done; lessc style.less style.css",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -21,6 +22,7 @@
     "css"
   ],
   "devDependencies": {
-    "less": "^3.9.0"
+    "less": "^3.9.0",
+    "node-sass": "^4.11.0"
   }
 }
