@@ -1,22 +1,64 @@
-function displayWhite(){
-  //
+function initiateGlobalTimer() {
+  let time = 0
+  let timer = setInterval(function(){
+    const timeCallbacks = {
+      '2.5': _ => { display('white', 'PTX'); display('orange', 'PTX') },
+      '26': _ => $('.logo').addClass('animate')
+    }
+    timeCallbacks[time] && timeCallbacks[time]()
+    time += .5
+  }, 500)
+}
+
+$.fn.lightOff = function() {
+  this.removeClass('on-r on-g')
+}
+
+function display(type, val){
+  $(`.${type} .light`).lightOff()
+  const query = (window[type][val] || window[type]['Ω']).split('\n').map((row, i) => 
+    row.split('').map((v,j) => 
+      v !== ' ' ? $(`.${type} .light-${i}-${j}`).addClass('on-'+v) : ''
+    )
+  )
 }
 
 $(document).ready(function(){
   $('.helmet-container, img').bind('click', e => {
     $('.helmet-container').addClass('expand')
     $('.helmet-container, img').unbind('click')
-    var count = 3;
-    console.log(count)
-    var timer = setInterval(function() {
-      if(count === 1) {
-        clearInterval(timer);
-        console.log(count-1)
-        $('audio')[0].play()
-      } else {
-        console.log(count-1)
-        count--;
-      }
-    }, 1000);
+    setTimeout(function(){
+      var count = 3;
+      display('white', count)
+      display('orange', count)
+      var timer = setInterval(function() {
+        if(count === 1) {
+          clearInterval(timer);
+          display('white', 'GO')
+          display('orange', 'GO')
+          $('audio')[0].play()
+          initiateGlobalTimer()
+        } else {
+          display('white', count-1)
+          display('orange', count-1)
+          count--;
+        }
+      }, 1000);
+    }, 750)
   })
+
+  $('.white .display').html([...Array(5)].map((und, i) => 
+    `<div class="row">${
+      [...Array(17)].map((und, j) => `<div class="light light-${i}-${j}"></div>`).join('')
+    }</div>`
+  ).join(''))
+  display('white', 'initial_play')
+
+
+  $('.orange .display').html([...Array(20)].map((und, i) => 
+    `<div class="row">${
+      [...Array(11)].map((und, j) => `<div class="light light-${i}-${j}"></div>`).join('')
+    }</div>`
+  ).join(''))
+  display('orange', 'initial_play')
 });

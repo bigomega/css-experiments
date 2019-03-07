@@ -3,9 +3,55 @@ body {
   margin: 0;
   text-align: center; }
   body .logo {
-    filter: invert(1) sepia(100%) saturate(10000%) hue-rotate(673deg) saturate(632%) drop-shadow(4px 8px 2px #000c);
+    filter: invert(1) sepia(100%) saturate(10000%) hue-rotate(313deg) saturate(632%) drop-shadow(4px 8px 2px #000c);
     width: 150px;
     margin: 40px 0; }
+    body .logo.animate {
+      -webkit-animation: logo-color-change 1s ease-in-out 0s infinite alternate;
+      -moz-animation: logo-color-change 1s ease-in-out 0s infinite alternate;
+      -ms-animation: logo-color-change 1s ease-in-out 0s infinite alternate;
+      -o-animation: logo-color-change 1s ease-in-out 0s infinite alternate;
+      animation: logo-color-change 1s ease-in-out 0s infinite alternate; }
+
+@-webkit-keyframes logo-color-change {
+  30% {
+    filter: invert(1) sepia(100%) saturate(10000%) hue-rotate(313deg) saturate(632%) drop-shadow(4px 8px 2px #000c); }
+  50% {
+    filter: invert(1) sepia(100%) saturate(10000%) hue-rotate(133deg) saturate(632%) drop-shadow(4px 8px 2px #000c); }
+  70% {
+    filter: invert(1) sepia(100%) saturate(10000%) hue-rotate(313deg) saturate(632%) drop-shadow(4px 8px 2px #000c); } }
+
+@-moz-keyframes logo-color-change {
+  30% {
+    filter: invert(1) sepia(100%) saturate(10000%) hue-rotate(313deg) saturate(632%) drop-shadow(4px 8px 2px #000c); }
+  50% {
+    filter: invert(1) sepia(100%) saturate(10000%) hue-rotate(133deg) saturate(632%) drop-shadow(4px 8px 2px #000c); }
+  70% {
+    filter: invert(1) sepia(100%) saturate(10000%) hue-rotate(313deg) saturate(632%) drop-shadow(4px 8px 2px #000c); } }
+
+@-ms-keyframes logo-color-change {
+  body .logo.animate 30% {
+    filter: invert(1) sepia(100%) saturate(10000%) hue-rotate(313deg) saturate(632%) drop-shadow(4px 8px 2px #000c); }
+  body .logo.animate 50% {
+    filter: invert(1) sepia(100%) saturate(10000%) hue-rotate(133deg) saturate(632%) drop-shadow(4px 8px 2px #000c); }
+  body .logo.animate 70% {
+    filter: invert(1) sepia(100%) saturate(10000%) hue-rotate(313deg) saturate(632%) drop-shadow(4px 8px 2px #000c); } }
+
+@-o-keyframes logo-color-change {
+  30% {
+    filter: invert(1) sepia(100%) saturate(10000%) hue-rotate(313deg) saturate(632%) drop-shadow(4px 8px 2px #000c); }
+  50% {
+    filter: invert(1) sepia(100%) saturate(10000%) hue-rotate(133deg) saturate(632%) drop-shadow(4px 8px 2px #000c); }
+  70% {
+    filter: invert(1) sepia(100%) saturate(10000%) hue-rotate(313deg) saturate(632%) drop-shadow(4px 8px 2px #000c); } }
+
+@keyframes logo-color-change {
+  30% {
+    filter: invert(1) sepia(100%) saturate(10000%) hue-rotate(313deg) saturate(632%) drop-shadow(4px 8px 2px #000c); }
+  50% {
+    filter: invert(1) sepia(100%) saturate(10000%) hue-rotate(133deg) saturate(632%) drop-shadow(4px 8px 2px #000c); }
+  70% {
+    filter: invert(1) sepia(100%) saturate(10000%) hue-rotate(313deg) saturate(632%) drop-shadow(4px 8px 2px #000c); } }
   body .helmet-container {
     position: relative;
     width: 380px;
@@ -75,6 +121,13 @@ body {
         opacity: .5;
         border-top-right-radius: 135px 135px;
         border-bottom-right-radius: 77px 76px;
+        z-index: 1; }
+      body .helmet-container .orange .display {
+        width: 175px;
+        height: 320px;
+        position: absolute;
+        top: 34px;
+        left: 60px;
         z-index: 1; }
     body .helmet-container.expand-mobile .orange {
       width: 100%;
@@ -256,6 +309,14 @@ body {
         border-bottom-left-radius: 165px 21px;
         border-bottom-right-radius: 165px 21px;
         background: #00f8; }
+      body .helmet-container .white .display {
+        position: absolute;
+        top: 210px;
+        left: 50px;
+        width: 280px;
+        height: 90px; }
+        body .helmet-container .white .display .row:last-child .light:first-child, body .helmet-container .white .display .row:last-child .light:last-child {
+          visibility: hidden; }
       body .helmet-container .white .mouth {
         position: absolute;
         left: 150px;
@@ -264,6 +325,28 @@ body {
         height: 11px;
         background: #00f8;
         border-right: 40px solid #0f08; }
+    body .helmet-container .display .row {
+      margin-top: 6px; }
+      body .helmet-container .display .row:first-child {
+        margin: 0; }
+    body .helmet-container .display .light {
+      width: 10px;
+      height: 10px;
+      border-radius: 2px;
+      display: inline-block;
+      margin-left: 6px;
+      background: none;
+      box-shadow: none; }
+      body .helmet-container .display .light:first-child {
+        margin: 0; }
+      body .helmet-container .display .light.on-r {
+        background: red;
+        box-shadow: 0 0 20px 2px red; }
+      body .helmet-container .display .light.on-g {
+        background: #8fc045;
+        box-shadow: 0 0 20px 1px #8fc045; }
+    body .helmet-container .orange .display .light {
+      border-radius: 10px; }
     body .helmet-container .shadow {
       background: #222e3d;
       width: 360px;
@@ -277,6 +360,8 @@ body {
       box-shadow: 100px 0 0 0 #222e3e, 100px 0 0 0 #222e3e, 200px 0 0 0 #222e3e, 300px 0 0 0 #222e3e, 400px 0 0 0 #222e3e, 500px 0 0 0 #222e3e, 600px 0 0 0 #222e3e, 700px 0 0 0 #222e3e, 800px 0 0 0 #222e3e, 900px 0 0 0 #222e3e, 1000px 0 0 0 #222e3e, 1100px 0 0 0 #222e3e, 1200px 0 0 0 #222e3e, 1300px 0 0 0 #222e3e, 1400px 0 0 0 #222e3e, 1500px 0 0 0 #222e3e, 1600px 0 0 0 #222e3e, 1700px 0 0 0 #222e3e, 1800px 0 0 0 #222e3e, 1900px 0 0 0 #222e3e, 2000px 0 0 0 #222e3e; }
     body .helmet-container.expand .shadow {
       display: none; }
+    body .helmet-container.expand .orange.colored .glass:before {
+      background: #000; }
     body .helmet-container .orange.colored .cover {
       background: #f8ae36; }
     body .helmet-container .orange.colored .cover:before, body .helmet-container .orange.colored .cover:after {
@@ -285,6 +370,8 @@ body {
       background: #000; }
     body .helmet-container .orange.colored .glass:before {
       background: #333; }
+    body .helmet-container.expand .white.colored .glass {
+      background: #000; }
     body .helmet-container .white.colored .eyes {
       border-bottom-color: #d1ddee; }
     body .helmet-container .white.colored .eyes:before {

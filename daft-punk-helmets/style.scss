@@ -6,9 +6,23 @@ body{
   text-align: center;
 
   .logo {
-    filter: invert(1) sepia(100%) saturate(10000%) hue-rotate(673deg) saturate(632%) drop-shadow(4px 8px 2px #000c);
+    filter: invert(1) sepia(100%) saturate(10000%) hue-rotate(313deg) saturate(632%) drop-shadow(4px 8px 2px #000c);
     width: 150px;
     margin: 40px 0;
+    &.animate {
+      @include keyframes(logo-color-change) {
+        30% {
+          filter: invert(1) sepia(100%) saturate(10000%) hue-rotate(313deg) saturate(632%) drop-shadow(4px 8px 2px #000c);
+        }
+        50% {
+          filter: invert(1) sepia(100%) saturate(10000%) hue-rotate(133deg) saturate(632%) drop-shadow(4px 8px 2px #000c);
+        }
+        70% {
+          filter: invert(1) sepia(100%) saturate(10000%) hue-rotate(313deg) saturate(632%) drop-shadow(4px 8px 2px #000c);
+        }
+      }
+      @include animation(logo-color-change 0.902s ease-in-out 0s infinite alternate)
+    }
   }
 
   .helmet-container {
@@ -90,6 +104,15 @@ body{
         opacity: .5;
         border-top-right-radius: 135px 135px;
         border-bottom-right-radius: 77px 76px;
+        z-index: 1;
+      }
+
+      .display {
+        width: 175px;
+        height: 320px;
+        position: absolute;
+        top: 34px;
+        left: 60px;
         z-index: 1;
       }
     }
@@ -303,6 +326,20 @@ body{
           background: #00f8;
       }
 
+      .display {
+        position: absolute;
+        top: 210px;
+        left: 50px;
+        width: 280px;
+        height: 90px;
+
+        .row:last-child {
+          .light:first-child, .light:last-child {
+            visibility: hidden;
+          }
+        }
+      }
+
       .mouth {
         position: absolute;
         left: 150px;
@@ -312,6 +349,39 @@ body{
         background: #00f8;
         border-right: 40px solid #0f08;
       }
+    }
+
+    .display .row {
+      margin-top: 6px;
+
+      &:first-child {
+        margin: 0;
+      }
+    }
+    .display .light {
+      width: 10px;
+      height: 10px;
+      border-radius: 2px;
+      display: inline-block;
+      margin-left: 6px;
+      background: none;
+      box-shadow: none;
+
+      &:first-child {
+        margin: 0;
+      }
+
+      &.on-r {
+        background: red;
+        box-shadow: 0 0 20px 2px red;
+      }
+      &.on-g {
+        background: #8fc045;
+        box-shadow: 0 0 20px 1px #8fc045;
+      }
+    }
+    .orange .display .light {
+      border-radius: 10px;
     }
 
     .shadow {
@@ -334,6 +404,9 @@ body{
       display: none;
     }
 
+    &.expand .orange.colored .glass:before {
+      background: #000;
+    }
     .orange.colored {
       .cover { background: #f8ae36; }
       .cover:before, .cover:after { background: #faaf21; }
@@ -341,6 +414,9 @@ body{
       .glass:before { background: #333 }
     }
 
+    &.expand .white.colored .glass {
+      background: #000;
+    }
     .white.colored {
       .eyes { border-bottom-color: #d1ddee; }
       .eyes:before { background: #d1ddee;  }
