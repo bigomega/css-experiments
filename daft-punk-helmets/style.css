@@ -1,39 +1,33 @@
 body {
   background: #2e3e51;
-  margin: none; }
-  body .heading {
-    font-family: 'Raleway', sans-serif;
-    font-size: 55px;
-    text-align: center; }
-    body .heading div.title {
-      position: relative;
-      display: inline-block;
-      padding: 10px; }
-      body .heading div.title .small {
-        font-size: 25px;
-        font-weight: 400; }
-    @media (max-width: 680px) {
-      body .heading {
-        font-size: 30px; } }
+  margin: 0;
+  text-align: center; }
+  body .logo {
+    filter: invert(1) sepia(100%) saturate(10000%) hue-rotate(673deg) saturate(632%) drop-shadow(4px 8px 2px #000c);
+    width: 150px;
+    margin: 40px 0; }
   body .helmet-container {
+    position: relative;
     width: 380px;
-    height: 430px;
-    position: absolute;
-    left: 127px;
-    top: 53px; }
+    height: 450px;
+    margin: auto;
+    transition: width .25s .25s linear;
+    cursor: pointer; }
+    body .helmet-container.expand {
+      width: 780px; }
     body .helmet-container .orange {
       overflow: hidden;
-      width: 100%;
+      width: 50%;
       height: 100%;
       position: absolute;
       top: 0;
-      transition: all .125s linear;
-      background: #2e3e51;
-      width: 50%; }
+      left: 0;
+      transition: left .25s .25s linear, width .25s linear, background 0s .25s linear;
+      background: #2e3e51; }
       body .helmet-container .orange .cover {
         width: 294px;
         height: 430px;
-        background: #f8ae36;
+        background: #f00;
         border-radius: 230px 220px 230px 230px;
         position: absolute;
         left: 41px;
@@ -42,7 +36,7 @@ body {
       body .helmet-container .orange .cover:before {
         content: '';
         /* opacity: .5; */
-        background: #faaf21;
+        background: #0808;
         width: 40px;
         height: 210px;
         position: absolute;
@@ -53,7 +47,7 @@ body {
       body .helmet-container .orange .cover:after {
         content: '';
         /* opacity: .5; */
-        background: #faaf21;
+        background: #0808;
         width: 40px;
         height: 210px;
         position: absolute;
@@ -64,7 +58,7 @@ body {
         z-index: 0; }
       body .helmet-container .orange .glass {
         position: relative;
-        background: #000;
+        background: #00f8;
         width: 270px;
         left: 13px;
         height: 360px;
@@ -74,7 +68,7 @@ body {
       body .helmet-container .orange .glass:before {
         content: '';
         position: absolute;
-        background: #333;
+        background: #f80;
         width: 134px;
         left: 136px;
         height: 360px;
@@ -82,182 +76,194 @@ body {
         border-top-right-radius: 135px 135px;
         border-bottom-right-radius: 77px 76px;
         z-index: 1; }
-    body .helmet-container .white .scalp .left {
-      width: 135px;
-      height: 120px;
-      background: #f00;
-      left: 55px;
-      position: relative;
-      border-top-left-radius: 110px; }
-    body .helmet-container .white .scalp .left:before {
-      content: '';
-      position: absolute;
-      left: -13px;
-      top: 60px;
-      border-left: 25px solid transparent;
-      border-bottom: 60px solid #00f; }
-    body .helmet-container .white .scalp .left:after {
-      content: '';
-      position: absolute;
-      left: -13px;
-      bottom: -20px;
-      width: 148px;
-      height: 20px;
-      background: #f80;
-      border-bottom-left-radius: 100%; }
-    body .helmet-container .white .scalp .right {
-      width: 135px;
-      height: 120px;
-      background: #00f;
-      right: 55px;
-      top: 0;
-      position: absolute;
-      border-top-right-radius: 110px; }
-    body .helmet-container .white .scalp .right:before {
-      content: '';
-      position: absolute;
-      right: -13px;
-      top: 60px;
-      border-right: 25px solid transparent;
-      border-bottom: 60px solid #f00; }
-    body .helmet-container .white .scalp .right:after {
-      content: '';
-      position: absolute;
-      right: -13px;
-      bottom: -20px;
-      width: 148px;
-      height: 20px;
-      background: #f80;
-      border-bottom-right-radius: 100%; }
-    body .helmet-container .white .eyes {
-      width: 296px;
-      height: 0;
-      left: 0px;
-      top: 120px;
-      position: absolute;
-      z-index: 0;
-      border-right: 42px solid transparent;
-      border-left: 42px solid transparent;
-      border-bottom: 73px solid #080; }
-    body .helmet-container .white .eyes:before {
-      content: '';
-      position: absolute;
-      left: -42px;
-      bottom: -132px;
+    body .helmet-container.expand-mobile .orange {
+      width: 100%;
+      transition: width .125s linear; }
+    body .helmet-container.expand .orange {
+      left: 420px;
+      width: 100%;
+      background: transparent; }
+    body .helmet-container .white {
       width: 380px;
-      height: 59px;
-      background: #f00; }
-    body .helmet-container .white .eyes:after {
-      content: '';
+      height: 430px;
       position: absolute;
-      left: -42px;
-      bottom: -187px;
-      width: 342px;
-      height: 28px;
-      border-left: 19px solid transparent;
-      border-right: 19px solid transparent;
-      border-top: 27px solid #080; }
-    body .helmet-container .white .jaw .left {
-      position: absolute;
-      left: 47px;
-      top: 280px;
-      width: 255px;
-      height: 10px;
-      border-left: 15px solid transparent;
-      border-right: 15px solid transparent;
-      border-top: 60px solid #f80; }
-    body .helmet-container .white .jaw .left:before {
-      content: '';
-      position: absolute;
-      left: 1px;
-      bottom: -98px;
-      width: 120px;
-      height: 28px;
-      border-left: 67px solid transparent;
-      border-right: 67px solid transparent;
-      border-top: 80px solid #0808; }
-    body .helmet-container .white .jaw .right {
-      position: absolute;
-      left: 47px;
-      top: 280px;
-      width: 128px;
-      height: 10px;
-      border-left: 15px solid transparent;
-      border-top: 60px solid #f80; }
-    body .helmet-container .white .jaw .right:before {
-      content: '';
-      position: absolute;
-      left: 1px;
-      bottom: -98px;
-      width: 60px;
-      height: 28px;
-      border-left: 67px solid transparent;
-      border-top: 80px solid #080; }
-    body .helmet-container .white .jaw-2 {
-      position: absolute;
-      left: 29px;
-      top: 279px;
-      width: 148px;
-      height: 10px;
-      border-left: 87px solid transparent;
-      border-right: 87px solid transparent;
-      border-top: 45px solid #00f8; }
-    body .helmet-container .white .jaw-2:before {
-      content: '';
-      position: absolute;
-      left: -1px;
-      bottom: -114px;
-      width: 120px;
-      height: 28px;
-      border-left: 15px solid transparent;
-      border-right: 16px solid transparent;
-      border-top: 97px solid #f008; }
-    body .helmet-container .white .jaw-2:after {
-      content: '';
-      position: absolute;
-      left: 14px;
-      bottom: -96px;
-      width: 120px;
-      height: 11px;
-      background: #00f8;
-      border-bottom-left-radius: 65px 20px;
-      border-bottom-right-radius: 65px 20px; }
-    body .helmet-container .white .glass {
-      position: absolute;
-      left: 24px;
-      top: 180px;
-      width: 331px;
-      height: 127px;
-      background: #0008;
-      border-bottom-right-radius: 120px 100px;
-      border-bottom-left-radius: 120px 100px; }
-    body .helmet-container .white .glass:before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 165px;
-      height: 127px;
-      background: #fff8;
-      border-bottom-left-radius: 120px 100px; }
-    body .helmet-container .white .glass:after {
-      content: '';
-      position: absolute;
-      left: 0px;
-      top: 0;
-      width: 331px;
-      height: 21px;
-      border-bottom-left-radius: 165px 21px;
-      border-bottom-right-radius: 165px 21px;
-      background: #00f8; }
-    body .helmet-container .white .mouth {
-      position: absolute;
-      left: 150px;
-      bottom: 53px;
-      width: 40px;
-      height: 11px;
-      background: #00f8;
-      border-right: 40px solid #0f08; }
+      top: 0; }
+      body .helmet-container .white .scalp .left {
+        width: 135px;
+        height: 120px;
+        background: #f00;
+        left: 55px;
+        position: relative;
+        border-top-left-radius: 110px; }
+      body .helmet-container .white .scalp .left:before {
+        content: '';
+        position: absolute;
+        left: -13px;
+        top: 60px;
+        border-left: 25px solid transparent;
+        border-bottom: 60px solid #00f; }
+      body .helmet-container .white .scalp .left:after {
+        content: '';
+        position: absolute;
+        left: -13px;
+        bottom: -20px;
+        width: 148px;
+        height: 20px;
+        background: #f80;
+        border-bottom-left-radius: 100%; }
+      body .helmet-container .white .scalp .right {
+        width: 135px;
+        height: 120px;
+        background: #00f;
+        right: 55px;
+        top: 0;
+        position: absolute;
+        border-top-right-radius: 110px; }
+      body .helmet-container .white .scalp .right:before {
+        content: '';
+        position: absolute;
+        right: -13px;
+        top: 60px;
+        border-right: 25px solid transparent;
+        border-bottom: 60px solid #f00; }
+      body .helmet-container .white .scalp .right:after {
+        content: '';
+        position: absolute;
+        right: -13px;
+        bottom: -20px;
+        width: 148px;
+        height: 20px;
+        background: #f80;
+        border-bottom-right-radius: 100%; }
+      body .helmet-container .white .eyes {
+        width: 296px;
+        height: 0;
+        left: 0px;
+        top: 120px;
+        position: absolute;
+        z-index: 0;
+        border-right: 42px solid transparent;
+        border-left: 42px solid transparent;
+        border-bottom: 73px solid #080; }
+      body .helmet-container .white .eyes:before {
+        content: '';
+        position: absolute;
+        left: -42px;
+        bottom: -132px;
+        width: 380px;
+        height: 59px;
+        background: #f00; }
+      body .helmet-container .white .eyes:after {
+        content: '';
+        position: absolute;
+        left: -42px;
+        bottom: -187px;
+        width: 342px;
+        height: 28px;
+        border-left: 19px solid transparent;
+        border-right: 19px solid transparent;
+        border-top: 27px solid #080; }
+      body .helmet-container .white .jaw .left {
+        position: absolute;
+        left: 47px;
+        top: 280px;
+        width: 255px;
+        height: 10px;
+        border-left: 15px solid transparent;
+        border-right: 15px solid transparent;
+        border-top: 60px solid #f80; }
+      body .helmet-container .white .jaw .left:before {
+        content: '';
+        position: absolute;
+        left: 1px;
+        bottom: -98px;
+        width: 120px;
+        height: 28px;
+        border-left: 67px solid transparent;
+        border-right: 67px solid transparent;
+        border-top: 80px solid #0808; }
+      body .helmet-container .white .jaw .right {
+        position: absolute;
+        left: 47px;
+        top: 280px;
+        width: 128px;
+        height: 10px;
+        border-left: 15px solid transparent;
+        border-top: 60px solid #f80; }
+      body .helmet-container .white .jaw .right:before {
+        content: '';
+        position: absolute;
+        left: 1px;
+        bottom: -98px;
+        width: 60px;
+        height: 28px;
+        border-left: 67px solid transparent;
+        border-top: 80px solid #080; }
+      body .helmet-container .white .jaw-2 {
+        position: absolute;
+        left: 29px;
+        top: 279px;
+        width: 148px;
+        height: 10px;
+        border-left: 87px solid transparent;
+        border-right: 87px solid transparent;
+        border-top: 45px solid #00f8; }
+      body .helmet-container .white .jaw-2:before {
+        content: '';
+        position: absolute;
+        left: -1px;
+        bottom: -114px;
+        width: 120px;
+        height: 28px;
+        border-left: 15px solid transparent;
+        border-right: 16px solid transparent;
+        border-top: 97px solid #f008; }
+      body .helmet-container .white .jaw-2:after {
+        content: '';
+        position: absolute;
+        left: 14px;
+        bottom: -96px;
+        width: 120px;
+        height: 11px;
+        background: #00f8;
+        border-bottom-left-radius: 65px 20px;
+        border-bottom-right-radius: 65px 20px; }
+      body .helmet-container .white .glass {
+        position: absolute;
+        left: 24px;
+        top: 180px;
+        width: 331px;
+        height: 127px;
+        background: #0008;
+        border-bottom-right-radius: 120px 100px;
+        border-bottom-left-radius: 120px 100px; }
+      body .helmet-container .white .glass:before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 165px;
+        height: 127px;
+        background: #fff8;
+        border-bottom-left-radius: 120px 100px; }
+      body .helmet-container .white .glass:after {
+        content: '';
+        position: absolute;
+        left: 0px;
+        top: 0;
+        width: 331px;
+        height: 21px;
+        border-bottom-left-radius: 165px 21px;
+        border-bottom-right-radius: 165px 21px;
+        background: #00f8; }
+      body .helmet-container .white .mouth {
+        position: absolute;
+        left: 150px;
+        bottom: 53px;
+        width: 40px;
+        height: 11px;
+        background: #00f8;
+        border-right: 40px solid #0f08; }
     body .helmet-container .shadow {
       background: #222e3d;
       width: 360px;
@@ -269,6 +275,16 @@ body {
       border-bottom-left-radius: 260px;
       border-top-left-radius: 80px;
       box-shadow: 100px 0 0 0 #222e3e, 100px 0 0 0 #222e3e, 200px 0 0 0 #222e3e, 300px 0 0 0 #222e3e, 400px 0 0 0 #222e3e, 500px 0 0 0 #222e3e, 600px 0 0 0 #222e3e, 700px 0 0 0 #222e3e, 800px 0 0 0 #222e3e, 900px 0 0 0 #222e3e, 1000px 0 0 0 #222e3e, 1100px 0 0 0 #222e3e, 1200px 0 0 0 #222e3e, 1300px 0 0 0 #222e3e, 1400px 0 0 0 #222e3e, 1500px 0 0 0 #222e3e, 1600px 0 0 0 #222e3e, 1700px 0 0 0 #222e3e, 1800px 0 0 0 #222e3e, 1900px 0 0 0 #222e3e, 2000px 0 0 0 #222e3e; }
+    body .helmet-container.expand .shadow {
+      display: none; }
+    body .helmet-container .orange.colored .cover {
+      background: #f8ae36; }
+    body .helmet-container .orange.colored .cover:before, body .helmet-container .orange.colored .cover:after {
+      background: #faaf21; }
+    body .helmet-container .orange.colored .glass {
+      background: #000; }
+    body .helmet-container .orange.colored .glass:before {
+      background: #333; }
     body .helmet-container .white.colored .eyes {
       border-bottom-color: #d1ddee; }
     body .helmet-container .white.colored .eyes:before {

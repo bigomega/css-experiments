@@ -2,51 +2,43 @@
 
 body{
   background: #2e3e51;
-  margin: none;
+  margin: 0;
+  text-align: center;
 
-  .heading{
-    font-family: 'Raleway', sans-serif;
-    font-size: 55px;
-    text-align: center;
-
-    div.title{
-      position: relative;
-      // background: fade_out($bg, 0.5);
-      display: inline-block;
-      padding: 10px;
-      .small{
-        font-size: 25px;
-        font-weight: 400;
-      } 
-    }
-    @media(max-width: 680px){
-      font-size: 30px;
-    }
+  .logo {
+    filter: invert(1) sepia(100%) saturate(10000%) hue-rotate(673deg) saturate(632%) drop-shadow(4px 8px 2px #000c);
+    width: 150px;
+    margin: 40px 0;
   }
 
   .helmet-container {
+    position: relative;
     width: 380px;
-    height: 430px;
-    position: absolute;
-    left: 127px;
-    top: 53px;
+    height: 450px;
+    margin: auto;
+    transition: width .25s .25s linear;
+    cursor: pointer;
+
+    &.expand {
+      width: 780px;
+    }
 
     .orange {
       overflow: hidden;
-      width: 100%;
+      width: 50%;
       height: 100%;
       position: absolute;
       top: 0;
-      transition: all .125s linear;
+      left: 0;
+      transition: left .25s .25s linear, width .25s linear, background 0s .25s linear;
       background: #2e3e51;
-      width: 50%;
       // border-right: 5px solid transparent; 
       // box-shadow: 5px 0px 6px -4px #222e3f;
 
       .cover {
         width: 294px;
         height: 430px;
-        background: #f8ae36;
+        background: #f00;
         border-radius: 230px 220px 230px 230px;
         position: absolute;
         left: 41px;
@@ -56,7 +48,7 @@ body{
       .cover:before {
         content: '';
         /* opacity: .5; */
-        background: #faaf21;
+        background: #0808;
         width: 40px;
         height: 210px;
         position: absolute;
@@ -68,7 +60,7 @@ body{
       .cover:after {
         content: '';
         /* opacity: .5; */
-        background: #faaf21;
+        background: #0808;
         width: 40px;
         height: 210px;
         position: absolute;
@@ -80,7 +72,7 @@ body{
       }
       .glass {
         position: relative;
-        background: #000;
+        background: #00f8;
         width: 270px;
         left: 13px;
         height: 360px;
@@ -91,7 +83,7 @@ body{
       .glass:before {
         content: '';
         position: absolute;
-        background: #333;
+        background: #f80;
         width: 134px;
         left: 136px;
         height: 360px;
@@ -102,7 +94,22 @@ body{
       }
     }
 
+    &.expand-mobile .orange {
+      width: 100%;
+      transition: width .125s linear;
+    }
+    &.expand .orange {
+      left: 420px;
+      width: 100%;
+      background: transparent;
+    }
+
     .white {
+      width: 380px;
+      height: 430px;
+      position: absolute;
+      top: 0;
+
       .scalp .left {
         width: 135px;
         height: 120px;
@@ -322,6 +329,16 @@ body{
           $val: #{$val}, #{$i * 100}px 0 0 0 #222e3e;
       }
       box-shadow: $val;
+    }
+    &.expand .shadow {
+      display: none;
+    }
+
+    .orange.colored {
+      .cover { background: #f8ae36; }
+      .cover:before, .cover:after { background: #faaf21; }
+      .glass { background: #000 }
+      .glass:before { background: #333 }
     }
 
     .white.colored {
