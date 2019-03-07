@@ -1,9 +1,15 @@
+function delay(t, v) {
+  return new Promise(function(resolve) {
+    setTimeout(resolve.bind(null, v), t)
+  });
+}
+
 function initiateGlobalTimer() {
   let time = 0
   let timer = setInterval(function(){
     const timeCallbacks = {
-      '2.5': _ => { display('white', 'PTX'); display('orange', 'PTX') },
-      '26': _ => $('.logo').addClass('animate')
+      '6.5': _ => { display('white', 'PTX'); display('orange', 'PTX') },
+      // '26': _ => $('.logo').addClass('animate')
     }
     timeCallbacks[time] && timeCallbacks[time]()
     time += .5
@@ -36,6 +42,15 @@ $(document).ready(function(){
           clearInterval(timer);
           display('white', 'GO')
           display('orange', 'GO')
+          $('.white').removeClass('colored')
+          delay(450)
+            .then(_ => $('.orange').removeClass('colored'))
+            .then(_ => delay(500))
+            .then(_ => $('.white').addClass('colored'))
+            .then(_ => delay(450))
+            .then(_ => $('.orange').addClass('colored'))
+            .catch(_ => window.location.reload())
+          ;
           $('audio')[0].play()
           initiateGlobalTimer()
         } else {

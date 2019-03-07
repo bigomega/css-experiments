@@ -52,6 +52,10 @@ window.white = {
 
 window.orange = {
     'Ω': `
+    \n\n\n\n
+   g
+   g
+   g
     ggg
    g   g
    g   g

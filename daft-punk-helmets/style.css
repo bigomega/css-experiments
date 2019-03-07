@@ -7,11 +7,11 @@ body {
     width: 150px;
     margin: 40px 0; }
     body .logo.animate {
-      -webkit-animation: logo-color-change 1s ease-in-out 0s infinite alternate;
-      -moz-animation: logo-color-change 1s ease-in-out 0s infinite alternate;
-      -ms-animation: logo-color-change 1s ease-in-out 0s infinite alternate;
-      -o-animation: logo-color-change 1s ease-in-out 0s infinite alternate;
-      animation: logo-color-change 1s ease-in-out 0s infinite alternate; }
+      -webkit-animation: logo-color-change 0.902s ease-in-out 0s infinite alternate;
+      -moz-animation: logo-color-change 0.902s ease-in-out 0s infinite alternate;
+      -ms-animation: logo-color-change 0.902s ease-in-out 0s infinite alternate;
+      -o-animation: logo-color-change 0.902s ease-in-out 0s infinite alternate;
+      animation: logo-color-change 0.902s ease-in-out 0s infinite alternate; }
 
 @-webkit-keyframes logo-color-change {
   30% {
@@ -336,7 +336,8 @@ body {
       display: inline-block;
       margin-left: 6px;
       background: none;
-      box-shadow: none; }
+      box-shadow: none;
+      transition: all .25s linear; }
       body .helmet-container .display .light:first-child {
         margin: 0; }
       body .helmet-container .display .light.on-r {

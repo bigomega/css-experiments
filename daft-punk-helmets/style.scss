@@ -366,6 +366,7 @@ body{
       margin-left: 6px;
       background: none;
       box-shadow: none;
+      transition: all .25s linear;
 
       &:first-child {
         margin: 0;
