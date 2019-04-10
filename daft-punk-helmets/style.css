@@ -337,12 +337,13 @@ body {
       margin-left: 6px;
       background: none;
       box-shadow: none;
-      transition: all .25s linear; }
+      transition: all .25s ease-out; }
       body .helmet-container .display .light:first-child {
         margin: 0; }
       body .helmet-container .display .light.on-r {
         background: red;
-        box-shadow: 0 0 20px 2px red; }
+        box-shadow: 0 0 20px 2px red;
+        transition: none; }
       body .helmet-container .display .light.on-g {
         background: #8fc045;
         box-shadow: 0 0 20px 1px #8fc045; }

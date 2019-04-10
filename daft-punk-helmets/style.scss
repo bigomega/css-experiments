@@ -366,7 +366,7 @@ body{
       margin-left: 6px;
       background: none;
       box-shadow: none;
-      transition: all .25s linear;
+      transition: all .25s ease-out;
 
       &:first-child {
         margin: 0;
@@ -375,6 +375,7 @@ body{
       &.on-r {
         background: red;
         box-shadow: 0 0 20px 2px red;
+        transition: none;
       }
       &.on-g {
         background: #8fc045;

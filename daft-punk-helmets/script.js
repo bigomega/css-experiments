@@ -8,7 +8,8 @@ function initiateGlobalTimer() {
   let time = 0
   let timer = setInterval(function(){
     const timeCallbacks = {
-      '6.5': _ => { display('white', 'PTX'); display('orange', 'PTX') },
+      '2.5': _ => display('white', 'PTX'),
+      '6.5': _ => display('orange', 'PTX'),
       // '26': _ => $('.logo').addClass('animate')
     }
     timeCallbacks[time] && timeCallbacks[time]()
